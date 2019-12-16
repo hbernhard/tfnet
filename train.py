@@ -1,5 +1,5 @@
 """Trains the AudioUNet Model"""
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 
 from tfnet import TFNetEstimator
 from tfnet import nets
@@ -8,6 +8,7 @@ import argshelper
 
 import datahelper.dataset as ds
 FLAGS = argshelper.FLAGS
+print(FLAGS)
 
 def main(argv):
     if FLAGS.debug:
@@ -116,12 +117,16 @@ def main(argv):
 
     hooks = []
     if FLAGS.profile:
+        print('------------------------------------------')
+        print('PROFILE')
         hooks += [tf.train.ProfilerHook(output_dir=FLAGS.model_dir,
                                         save_steps=500,
                                         show_memory=False),
                  ]
 
     if FLAGS.enable_tracer:
+        print('------------------------------------------')
+        print('ENABLETRACER')
         try:
             from tftracer import TracingServer
             tracing_server = TracingServer(server_port=8888)
@@ -131,6 +136,8 @@ def main(argv):
                             "enabled")
 
     if FLAGS.testset:
+        print('------------------------------------------')
+        print('TESTSET')
         #eval_summary_hook = tf.train.SummarySaverHook(
         #    save_steps=1,
         #    summary_op=tf.summary.merge_all('audio_samples'))
@@ -142,12 +149,16 @@ def main(argv):
                                          )
         while True:
             try:
+                print('------------------------------------------')
+                print('TRAINING')
                 tf.estimator.train_and_evaluate(estimator=tfnet_est,
                                                 train_spec=train_spec,
                                                 eval_spec=eval_spec)
             except tf.estimator.NanLossDuringTrainingError:
                 tf.logging.warn("NaN loss encountered. Attempting to continue")
                 continue
+            print('------------------------------------------')
+            print('TRAINED')
             break
     else:
         tfnet_est.train(input_fn=train_input_fn,

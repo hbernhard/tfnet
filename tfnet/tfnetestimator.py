@@ -1,6 +1,6 @@
 """TFNetEstimator implementation"""
 import enum
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 #import tensorflow.estimator as tfe
 
 from . import ops

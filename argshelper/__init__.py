@@ -1,5 +1,5 @@
 """Command line args for train.py"""
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 from tfnet import nets
 from . import distribute
 from . import branch_args

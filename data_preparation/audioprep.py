@@ -2,7 +2,7 @@
 training"""
 import os
 import json
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 
 import datahelper.dataset as ds
 
@@ -91,16 +91,18 @@ def main(argv):
     meta_fullpath = os.path.join(FLAGS.output_dir, meta_filename)
 
     print("---------------------------------------------------")
-    print(f"Preparing {FLAGS.fileslist} into {output_filename}")
+    print("Preparing {} into {}".format(FLAGS.fileslist, output_filename))
     print("---------------------------------------------------")
     print("Config:")
     print(json.dumps(dataset_metadata, indent=2))
 
+    print("Loading Filelist")
     dset = ds.audio_dataset_from_fileslist(FLAGS.fileslist,
                                            FLAGS.dataroot,
                                            trim_silence=FLAGS.silence_thresh,
                                            gt_rate=FLAGS.gt_rate,
                                           )
+    print("Getting Segment")
     dset = ds.get_segment_dataset(dset,
                                   length=FLAGS.seq_length,
                                   segs_per_sample=FLAGS.segs_per_sample,

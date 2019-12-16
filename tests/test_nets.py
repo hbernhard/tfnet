@@ -3,7 +3,7 @@ Smoketests for nets implementation
 tests creation of graphs with default sized (?, 8192, 1) inputs
 """
 import unittest
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 import tfnet.nets as nets
 from tfnet import perceptual
 from tfnet import ops

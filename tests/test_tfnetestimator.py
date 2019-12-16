@@ -2,7 +2,7 @@
 basic tests for TFNetEstimator
 """
 import unittest
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 
 from tfnet import TFNetEstimator
 

@@ -2,7 +2,7 @@
 """Used to generate a test model to be used by eval and prediction testcases
 Uses same code as test_train testcase"""
 import sys
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 from tfnet import TFNetEstimator
 from tfnet import nets
 import datahelper.dataset as ds

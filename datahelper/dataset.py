@@ -1,7 +1,7 @@
 """Data loading pipelines"""
 import os
 from functools import partial
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 
 import numpy as np
 from scipy.io import wavfile
@@ -213,8 +213,7 @@ def get_tfrecord_dataset(filename, batchsize=16, drop_remainder=False,
     _noop = lambda x: x
     if x_shape[0] != y_shape[0]:
         _rate = y_shape[0] // x_shape[0]
-        print(f"Input needs to be upsampled {_rate} times. "
-              "Will be upsampled with a low-pass filter")
+        print("Input needs to be upsampled {} times. Will be upsampled with a low-pass filter".format(_rate))
         lq_preop = lambda x: tf.py_func(lambda x: upsample_fn(x, _rate), [x], tf.float32)
     else:
         lq_preop = _noop

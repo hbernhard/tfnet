@@ -2,7 +2,7 @@
 import unittest
 import sys
 
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 import datahelper as dh
 
 from tests.constants import * #pylint: disable=wildcard-import,unused-wildcard-import

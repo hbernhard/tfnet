@@ -1,6 +1,6 @@
 """Common signal processing functions used in perceptual audio coding"""
 import numpy as np
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 from . import ops
 
 def sine_window(window_length, dtype=tf.float32):

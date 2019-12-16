@@ -1,5 +1,5 @@
 """Summaries types to log into tensorboard"""
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 
 def audio_sample_summary(sample_rate, max_outputs=8):
     return lambda name, pred, gt: tf.summary.audio(name,

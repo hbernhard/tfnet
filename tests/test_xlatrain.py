@@ -2,7 +2,7 @@
 import unittest
 import sys
 import os
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 from tfnet import TFNetEstimator
 from tfnet import nets
 import datahelper.dataset as ds

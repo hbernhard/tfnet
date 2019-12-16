@@ -1,7 +1,7 @@
 """Unittests for on the fly training data pipeline"""
 import unittest
 import sys
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 
 
 import datahelper.dataset as ds

@@ -1,7 +1,7 @@
 """
 Tensor ops used by TFNet
 """
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 from . import perceptual as p
 
 #Consider using @export decorators?

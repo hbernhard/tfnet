@@ -1,7 +1,7 @@
 """Dummy dataset for unittests"""
 import unittest
 import numpy as np
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 
 def get_dummy_dataset(length=8192, channels=1, count=16,
                       batchsize=4, repeat=200,

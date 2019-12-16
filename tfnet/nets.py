@@ -1,11 +1,11 @@
 """Network implementation for TF-Net UNets
 """
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 from . import ops
 from . import utils
 from . import perceptual
-import tensorflow.keras.layers as layers
-from tensorflow.keras import activations
+import tensorflow.compat.v1.keras.layers as layers
+from tensorflow.compat.v1.keras import activations
 from functools import partial
 
 LOG_D = tf.logging.debug

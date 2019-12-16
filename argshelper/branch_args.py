@@ -1,5 +1,5 @@
 """Construct branch configuration from command line args"""
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 from tfnet.nets import _BOTTLENECK_DEFAULT
 
 def _to_int_list(str_list):
